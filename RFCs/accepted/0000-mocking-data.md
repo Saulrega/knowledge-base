@@ -1,68 +1,79 @@
 - Start Date: (fill me in with today's date, YYYY-MM-DD)
-- Members: (fill me with the names of the RFC creators)
-- RFC PR: (leave this empty)
-
+- Members: Saúl Regalado Adrián Fernández
+- RFC PR: 
 # Summary
 
-Brief explanation of the feature.
+Use the faker.js library to mock data, since it has several properties that generate data similar to what is expected in everyday use of the system.
 
 # Basic example
 
-If the proposal involves a new or changed API, include a basic code example.
-Omit this section if it's not applicable.
+- faker.name.firstName() ---->  Cameron
+
+- faker.phone.phoneNumber() —-->  +1 291-299-0192
+
+- console.log(
+    faker.fake('{{name.lastName}}, {{name.firstName}} {{name.suffix}}')
+  );
+
 
 # Motivation
 
-Why are we doing this? What use cases does it support? What is the expected
-outcome?
+In order to guarantee the correct develope of all data processing, the need arises to test the implementations, with data as close as reality we can generate:
 
-Please focus on explaining the motivation so that if this RFC is not accepted,
-the motivation could be used to develop alternative solutions. In other words,
-enumerate the constraints you are trying to solve without coupling them too
-closely to the solution you have in mind.
+- Check if it is the expected data type.
+- The correct process is applied to each of the data.
+- Measure the performance of the application, if the process is applied effectively.
+
 
 # Detailed design
 
-This is the bulk of the RFC. Explain the design in enough detail for somebody
-familiar with React to understand, and for somebody familiar with the
-implementation to implement. This should get into specifics and corner-cases,
-and include examples of how the feature is used. Any new terminology should be
-defined here.
+To generate a lot of data, very similar to common use, that allows us to test the behavior of these mocks within the development, both the validation and the process of valid data. The properties that may interest us would be:
+
+- faker.name: to generate user base information 
+  - findName: generates a first and last name
+  - gender: useful for gender analysis/segregation
+
+
+- faker.finance: for everything related to costs and payments
+  - amount: simulate hosting costs
+- faker.address: everything related to sites and location
+  - country
+  - state
+  - latitude and longitude
+
+- faker.datatype: useful if you want to test data type validation
+  - number
+  - float
+  - json
+
+- faker.date: fake reservations
+  - between: generate dates between chosen periods
+
+- faker.internet:
+  - email: essential for creating an account within the platform
+  - avatar: check everything related to profile pictures
+
+- faker.image: check support for messages and comments containing images
+
 
 # Drawbacks
 
-Why should we *not* do this? Please consider:
+Its implementation is limited solely to testing the development's ability to process the required information, however, with this proposal we cannot measure software performance
 
-- implementation cost, both in term of code size and complexity
-- whether the proposed feature can be implemented in user space
-- the impact on teaching people React
-- integration of this feature with other existing and planned features
-- cost of migrating existing React applications (is it a breaking change?)
-
-There are tradeoffs to choosing any path. Attempt to identify them here.
 
 # Alternatives
 
-What other designs have been considered? What is the impact of not doing this?
+Implement an in-house method that is capable of measuring the performance of the system, thus providing the necessary metrics to know if it meets the expected parameters or the parts where there is a possibility of improvement
 
 # Adoption strategy
 
-If we implement this proposal, how will existing C9 developers adopt it? Is
-this a breaking change? Can we write a codemod? Should we coordinate with
-other projects or libraries?
+It is a library written in TypeScript, the project is designed to be developed in the same language, so the process of adopting the solution will be simple
 
 # How we teach this
 
-What names and terminology work best for these concepts and why? How is this
-idea best presented? As a continuation of existing C9 projects patterns?
 
-Would the acceptance of this proposal mean the C9 documentation must be
-re-organized or altered? Does it change how C9 is taught to new developers
-at any level?
+With the documentation plus some concrete examples should be enough to show the operation of the library and its use.
 
-How should this feature be taught to existing C9 developers?
 
 # Unresolved questions
-
-Optional, but suggested for first drafts. What parts of the design are still
-TBD?
+At the moment no.
